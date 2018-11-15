@@ -40,7 +40,7 @@ public class Board extends Unique {
         }
         Optional<Tile> foundOnTile = findTileOccupant(tileOccupant);
         if (foundOnTile.isPresent()) {
-            throw new TileOccupantNotFoundException();
+            throw new TileOccupantAlreadyExistsException();
         }
         target.setOccupant(tileOccupant);
     }
