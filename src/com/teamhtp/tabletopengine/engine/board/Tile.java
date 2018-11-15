@@ -1,15 +1,18 @@
 package com.teamhtp.tabletopengine.engine.board;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tile {
 
     private int x;
     private int y;
-    private TileOccupant occupant;
+    private List<TileOccupant> occupants;
 
     public Tile(int x, int y) {
         this.x = x;
         this.y = y;
-        this.occupant = null;
+        occupants = new ArrayList<>();
     }
 
     public int getX() {
@@ -21,15 +24,19 @@ public class Tile {
     }
 
     public boolean isOccupied() {
-        return occupant != null;
+        return !occupants.isEmpty();
     }
 
-    public TileOccupant getOccupant() {
-        return occupant;
+    public List<TileOccupant> getOccupants() {
+        return occupants;
     }
 
-    public void setOccupant(TileOccupant occupant) {
-        this.occupant = occupant;
+    public void addOccupant(TileOccupant occupant) {
+        occupants.add(occupant);
+    }
+
+    public void removeOccupant(TileOccupant occupant) {
+        occupants.remove(occupant);
     }
 
 }
