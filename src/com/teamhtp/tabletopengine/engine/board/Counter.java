@@ -24,11 +24,11 @@ public class Counter extends Unique {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public double getValue() {
-        return this.value;
+        return value;
     }
 
 }

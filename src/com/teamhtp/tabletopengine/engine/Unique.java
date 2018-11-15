@@ -15,7 +15,7 @@ public class Unique {
     }
 
     public UUID getUuid() {
-        return this.uuid;
+        return uuid;
     }
 
 }

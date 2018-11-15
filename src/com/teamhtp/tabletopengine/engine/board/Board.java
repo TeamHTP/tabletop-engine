@@ -19,14 +19,6 @@ public class Board extends Unique {
         }
     }
 
-    public int getWidth() {
-        return tiles.length;
-    }
-
-    public int getHeight() {
-        return tiles[0].length;
-    }
-
     public Tile getTile(int x, int y) {
         return tiles[x][y];
     }
@@ -36,14 +28,13 @@ public class Board extends Unique {
     }
 
     public Optional<Tile> findTileOccupant(UUID uuid) {
-        Optional<Tile> found = Arrays.stream(tiles)
+        return Arrays.stream(tiles)
                 .flatMap(Arrays::stream)
                 .filter((tile) -> tile.getOccupant().getUuid().equals(uuid)).findFirst();
-        return found;
     }
 
     public void putTileOccupant(TileOccupant tileOccupant, int x, int y) {
-        Tile target = this.getTile(x, y);
+        Tile target = getTile(x, y);
         if (target.isOccupied()) {
             throw new TileOccupiedException();
         }
@@ -55,7 +46,7 @@ public class Board extends Unique {
     }
 
     public void moveTileOccupant(TileOccupant tileOccupant, int x, int y) {
-        Tile target = this.getTile(x, y);
+        Tile target = getTile(x, y);
         if (target.isOccupied()) {
             throw new TileOccupiedException();
         }
@@ -65,6 +56,14 @@ public class Board extends Unique {
         }
         foundOnTile.get().setOccupant(null);
         target.setOccupant(tileOccupant);
+    }
+
+    public int getWidth() {
+        return tiles.length;
+    }
+
+    public int getHeight() {
+        return tiles[0].length;
     }
 
 }
